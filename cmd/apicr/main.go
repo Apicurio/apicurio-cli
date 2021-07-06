@@ -16,6 +16,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var generateDocs = os.Getenv("GENERATE_DOCS") == "true"
+
 func main() {
 	localizer, err := goi18n.New(nil)
 	if err != nil {
@@ -36,6 +38,12 @@ func main() {
 	rootCmd := root.NewRootCommand(cmdFactory, buildVersion)
 
 	rootCmd.InitDefaultHelpCmd()
+
+	if generateDocs {
+		generateDocumentation(rootCmd)
+		os.Exit(0)
+	}
+
 	err = rootCmd.Execute()
 
 	if err == nil {

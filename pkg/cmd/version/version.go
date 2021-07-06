@@ -1,11 +1,9 @@
 package version
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/apicurio/apicurio-cli/internal/build"
-	"github.com/apicurio/apicurio-cli/pkg/cmd/debug"
 	"github.com/apicurio/apicurio-cli/pkg/cmd/factory"
 	"github.com/apicurio/apicurio-cli/pkg/iostreams"
 	"github.com/apicurio/apicurio-cli/pkg/localize"
@@ -41,16 +39,5 @@ func NewVersionCmd(f *factory.Factory) *cobra.Command {
 
 func runCmd(opts *Options) (err error) {
 	fmt.Fprintln(opts.IO.Out, opts.localizer.MustLocalize("version.cmd.outputText", localize.NewEntry("Version", build.Version)))
-
-	logger, err := opts.Logger()
-	if err != nil {
-		return err
-	}
-
-	// debug mode checks this for a version update also.
-	// so we check if is enabled first so as not to print it twice
-	if !debug.Enabled() {
-		build.CheckForUpdate(context.Background(), logger, opts.localizer)
-	}
 	return nil
 }
