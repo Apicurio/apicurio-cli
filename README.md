@@ -1,9 +1,43 @@
 # apicurio-cli
 Command line tool for Apicurio projects.
 
-## Commands
+## Installation
 
-See the [Command-Line Reference](./docs/commands/apicurio.adoc) section for details of all available commands and options.
+1. Please navigate to release and select binary file that matches your operating system
+2. Install binary in the path
+
+## Usage
+
+```
+[wtrocki@graphapi]$ apicr service-registry
+Manage and interact with your Service Registry instances directly from the command line.
+
+Create new Service Registry instances and interact with them by adding schema and API artifacts and downloading them to your computer.
+
+Commands are divided into the following categories:
+
+* Instance management commands: create, list, and so on
+* Commands executed on selected instance: artifacts
+* "use" command that selects the current instance
+
+Usage:
+  apicr service-registry [command]
+
+
+Available Commands:
+  artifact    Manage Service Registry artifacts
+  create      Create a Service Registry instance
+  delete      Delete a Service Registry instance
+  describe    Describe a Service Registry instance
+  list        List Service Registry instances
+  role        Service Registry role management
+  rule        Manage artifact rules in a Service Registry instance
+  use         Use a Service Registry instance
+
+Global Flags:
+  -h, --help   Prints help information
+
+Use "apicr service-registry [command] --help" for more information about a command.
 
 ## Contributing
 
