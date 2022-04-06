@@ -5,28 +5,24 @@ import (
 	"os"
 
 	"github.com/apicurio/apicurio-cli/internal/build"
-	"github.com/apicurio/apicurio-cli/pkg/localize/goi18n"
-	"github.com/redhat-developer/app-services-cli/pkg/doc"
+	"github.com/redhat-developer/app-services-cli/pkg/core/config"
+	"github.com/redhat-developer/app-services-cli/pkg/core/localize/goi18n"
 
-	"github.com/apicurio/apicurio-cli/internal/config"
+	"github.com/redhat-developer/app-services-cli/pkg/shared/factory"
+	"github.com/redhat-developer/app-services-cli/pkg/shared/factory/defaultfactory"
 
-	"github.com/apicurio/apicurio-cli/pkg/cmd/factory"
 	"github.com/apicurio/apicurio-cli/pkg/cmd/root"
-
-	"github.com/spf13/cobra"
 )
 
-var generateDocs = os.Getenv("GENERATE_DOCS") == "true"
-
 func main() {
-	localizer, err := goi18n.New(nil)
+	localizer, err := goi18n.New(&goi18n.Config{})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 
 	buildVersion := build.Version
-	cmdFactory := factory.New(build.Version, localizer)
+	cmdFactory := defaultfactory.New(localizer)
 
 	if err != nil {
 		fmt.Println(cmdFactory.IOStreams.ErrOut, err)
@@ -39,35 +35,10 @@ func main() {
 
 	rootCmd.InitDefaultHelpCmd()
 
-	if generateDocs {
-		generateDocumentation(rootCmd)
-		os.Exit(0)
-	}
-
 	err = rootCmd.Execute()
 
 	if err == nil {
 		return
-	}
-}
-
-/**
-* Generates documentation files
- */
-func generateDocumentation(rootCommand *cobra.Command) {
-	fmt.Fprint(os.Stderr, "Generating docs.\n\n")
-	filePrepender := func(filename string) string {
-		return ""
-	}
-
-	rootCommand.DisableAutoGenTag = true
-
-	linkHandler := func(s string) string { return s }
-
-	err := doc.GenAsciidocTreeCustom(rootCommand, "./docs/commands", filePrepender, linkHandler)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
 	}
 }
 
