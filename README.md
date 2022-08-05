@@ -38,6 +38,15 @@ Global Flags:
   -h, --help   Prints help information
 
 Use "apicr service-registry [command] --help" for more information about a command.
+```
+
+## Using apicurio-cli with Operate First Apicurio Registries
+
+To use apicurio-cli with Operate First Apicurio registries, use this login command:
+
+```
+apicr login --api-gateway https://fleet-manager-mt-apicurio-apicurio-registry.apps.smaug.na.operate-first.cloud --auth-url https://auth.apicur.io/auth/realms/operate-first-apicurio --client-id apicurio-cli --mas-auth-url https://auth.apicur.io/auth/realms/operate-first-apicurio
+```
 
 ## Contributing
 
