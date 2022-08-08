@@ -9,7 +9,7 @@ Command line tool for Apicurio projects.
 ## Usage
 
 ```
-[wtrocki@graphapi]$ apicr service-registry
+$ apicr service-registry
 Manage and interact with your Service Registry instances directly from the command line.
 
 Create new Service Registry instances and interact with them by adding schema and API artifacts and downloading them to your computer.
