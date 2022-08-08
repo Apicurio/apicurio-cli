@@ -4,9 +4,12 @@ import (
 	"flag"
 
 	"github.com/redhat-developer/app-services-cli/pkg/cmd/completion"
+	contextcmd "github.com/redhat-developer/app-services-cli/pkg/cmd/context"
 	"github.com/redhat-developer/app-services-cli/pkg/cmd/login"
 	"github.com/redhat-developer/app-services-cli/pkg/cmd/logout"
 	"github.com/redhat-developer/app-services-cli/pkg/cmd/registry"
+	"github.com/redhat-developer/app-services-cli/pkg/cmd/request"
+	"github.com/redhat-developer/app-services-cli/pkg/cmd/serviceaccount"
 	"github.com/redhat-developer/app-services-cli/pkg/shared/factory"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
@@ -36,6 +39,8 @@ func NewRootCommand(f *factory.Factory, version string) *cobra.Command {
 
 	// Plugin command
 	cmd.AddCommand(registry.NewServiceRegistryCommand(f))
-
+	cmd.AddCommand(contextcmd.NewContextCmd(f))
+	cmd.AddCommand(serviceaccount.NewServiceAccountCommand(f))
+	cmd.AddCommand(request.NewCallCmd(f))
 	return cmd
 }
