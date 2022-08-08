@@ -1,4 +1,12 @@
 
+<a name="v0.2.0"></a>
+## [v0.2.0](https://github.com/apicurio/apicurio-cli/compare/v0.1.0...v0.2.0) (2022-08-08)
+
+### Bug Fixes
+
+* update rhoas sdk version ([#4](https://github.com/apicurio/apicurio-cli/issues/4))
+
+
 <a name="v0.1.0"></a>
 ## [v0.1.0](https://github.com/apicurio/apicurio-cli/compare/0.1.0...v0.1.0) (2022-04-06)
 
