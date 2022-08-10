@@ -8,6 +8,7 @@ release:
 before:
   hooks:
     - go mod download
+    - go mod tidy
     
 env:
   - GO111MODULE=on
