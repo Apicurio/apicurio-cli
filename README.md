@@ -44,8 +44,22 @@ Use "apicr service-registry [command] --help" for more information about a comma
 
 To use apicurio-cli with Operate First Apicurio registries, use this login command:
 
+```bash
+apicr login --api-gateway https://fleet-manager-mt-apicurio-apicurio-registry.apps.smaug.na.operate-first.cloud --auth-url https://auth.apicur.io/auth/realms/operate-first-apicurio --client-id apicurio-cli
 ```
-apicr login --api-gateway https://fleet-manager-mt-apicurio-apicurio-registry.apps.smaug.na.operate-first.cloud --auth-url https://auth.apicur.io/auth/realms/operate-first-apicurio --client-id apicurio-cli --mas-auth-url https://auth.apicur.io/auth/realms/operate-first-apicurio
+
+## Using apicurio-cli with Self Hosted Apicurio Registries
+
+To use apicurio-cli with Self Hosted Apicurio registries, use this login command:
+
+```bash
+apicr login --api-gateway <fleet-manager-url> --auth-url <keycloak-url> --client-id <keycloak-relevant-client>
+```
+
+And bypass the checks while performing operations on the registries:
+
+```bash
+apicr service-registry create --bypass-checks
 ```
 
 ## Contributing
