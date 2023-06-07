@@ -3,14 +3,14 @@ package root
 import (
 	"flag"
 
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/completion"
-	contextcmd "github.com/redhat-developer/app-services-cli/pkg/cmd/context"
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/login"
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/logout"
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/registry"
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/request"
-	"github.com/redhat-developer/app-services-cli/pkg/cmd/serviceaccount"
-	"github.com/redhat-developer/app-services-cli/pkg/shared/factory"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/completion"
+	contextcmd "github.com/apicurio/apicurio-cli/pkg/cmd/context"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/login"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/logout"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/registry"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/request"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/serviceaccount"
+	"github.com/apicurio/apicurio-cli/pkg/shared/factory"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )

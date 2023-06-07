@@ -1,0 +1,81 @@
+[kafka.update.cmd.shortDescription]
+description = "Short description for command"
+one = "Update configuration details for a Kafka instance."
+
+[kafka.update.cmd.longDescription]
+description = "Long description for command"
+one = '''
+Update configuration details for a Kafka instance. By modifying these settings, you can configure your Kafka instances to suit your particular environment.
+'''
+
+[kafka.update.cmd.examples]
+description = 'Examples of how to use the command'
+one = '''
+# Update the Kafka instance owner
+$ rhoas kafka update --name=my-kafka --owner=other-user
+
+# Update the owner of the current Kafka instance
+$ rhoas kafka update --owner=other-user
+
+# Update the reauthentication configuration of the current Kafka instance
+$ rhoas kafka update --reauthentication=true
+
+# Update the current Kafka instance in interactive mode
+$ rhoas kafka update
+'''
+
+[kafka.update.flag.id]
+description = 'Description for the --id flag'
+one = 'Unique ID of the Kafka instance you want to update'
+
+[kafka.update.flag.name]
+description = 'Description for the --name flag'
+one = 'Name of the Kafka instance you want to update'
+
+[kafka.update.flag.owner]
+description = 'Description for the --owner flag'
+one = 'ID of the user you want to set as the owner of this Kafka instance'
+
+[kafka.update.flag.reauthentication]
+one = 'Enable or disable connection reauthentication for the Kafka instance'
+
+[kafka.update.flag.yes]
+one = 'Forcibly update the Kafka instance without confirmation'
+
+[kafka.update.summaryTitle]
+one = 'Summary of Proposed Changes'
+
+[kafka.update.reauthentication.disclaimer]
+one = '''
+This change can affect the security of your Kafka instance. If an attacker obtains credentials to your Kafka instance, they will be able to stay connected indefinitely. Deactivating the user account or service account will not close the connections that the attacker has opened. In this scenario, you would need to add Access Control List rules (ACLs) to prevent the unauthorized connections from performing any operations. You could also contact Red Hat Support for assistance.
+'''
+
+[kafka.update.confirmDialog.message]
+one = 'Are you sure you want to update the Kafka instance "{{.Name}}"?'
+
+[kafka.update.log.info.updating]
+one = 'Updating Kafka instance "{{.Name}}"...'
+
+[kafka.update.log.info.nothingToUpdate]
+one = 'Provided values match current Kafka configuration'
+
+[kafka.update.log.info.updateSuccess]
+one = 'Kafka instance "{{.Name}}" has been updated. Run "rhoas kafka describe --name {{.Name}}" to view its configuration.'
+
+[kafka.update.log.info.updateFailed]
+one = 'Kafka instance could not be updated: {{.Reason}}'
+
+[kafka.update.log.info.loadingUsers]
+one = 'Loading users...'
+
+[kafka.update.input.message.selectOwner]
+one = "Select new owner:"
+
+[kafka.update.input.message.reauthentication]
+one = "Enable connection reauthentication:"
+
+[kafka.update.error.loadUsersError]
+one = 'unable to load users'
+
+[kafka.update.log.info.onlyOrgAdminsCanUpdate]
+one = "Only organization administrators have the ability to update a Kafka instance."

@@ -1,0 +1,105 @@
+[setting.cmd.description.short]
+one = 'Configure settings for a Service Registry instance'
+
+[setting.cmd.description.long]
+one = '''
+Service Registry instance owners, instance administrators, and organization administrators can 
+configure settings for a Service Registry instance. 
+
+The available settings include the following options: 
+
+* registry.auth.authenticated-read-access.enabled - Specifies whether Service Registry grants at least 
+  read-only access to requests from any authenticated user in the same organization, regardless of their 
+  user role. Defaults to false.  
+* registry.auth.basic-auth-client-credentials.enabled - Specifies whether Service Registry users can 
+  authenticate using HTTP basic authentication, in addition to OAuth. Defaults to true.
+* registry.auth.owner-only-authorization - Specifies whether only the user who creates an artifact can 
+  modify that artifact. Defaults to false. 
+* registry.ccompat.legacy-id-mode.enabled - Specifies whether the Confluent Schema Registry compatibility 
+  API uses globalId instead of contentId as an artifact identifier. Defaults to false.
+'''
+
+[setting.cmd.example]
+one = '''
+## List all settings for the current Service Registry instance
+$ rhoas service-registry setting list
+
+## Set the value of setting
+$ rhoas service-registry setting set --name registry.ccompat.legacy-id-mode.enabled --value true
+'''
+
+[setting.list.cmd.description.short]
+one = 'List settings for a Service Registry instance'
+
+[setting.list.cmd.description.long]
+one = 'List all settings for a Service Registry instance with their values and types'
+
+[setting.list.cmd.example]
+one = '''
+## List all settings for the current Service Registry instance
+$ rhoas service-registry setting list
+
+## List all settings for a specific Service Registry instance
+$ rhoas service-registry setting list --instance-id=8ecff228-1ffe-4cf5-b38b-55223885ee00
+'''
+
+[setting.get.cmd.description.short]
+one = 'Get value of the setting for a Service Registry instance'
+
+[setting.get.cmd.description.long]
+one = 'Get the formatted value of the setting and other information for a Service Registry instance'
+
+[setting.get.cmd.example]
+one = '''
+## Get the setting for a Service Registry instance by name
+$ rhoas service-registry setting get --name registry.ccompat.legacy-id-mode.enabled
+
+## Get the setting for a Service Registry instance in YAML format by name
+$ rhoas service-registry setting get --name registry.ccompat.legacy-id-mode.enabled --output yaml
+'''
+
+[setting.get.cmd.flag.settingName.description]
+one = 'Name of the setting for a Service Registry instance'
+
+[setting.get.input.settingName.message]
+one = 'Name of the setting for a Service Registry instance:'
+
+[setting.set.cmd.description.short]
+one = 'Set value of the setting for a Service Registry instance'
+
+[setting.set.cmd.description.long]
+one = 'Set the value of the Service Registry setting to a specific value or reset to default'
+
+[setting.set.cmd.example]
+one = '''
+## Set value of setting by name
+$ rhoas service-registry setting set --name registry.ccompat.legacy-id-mode.enabled --value true
+
+## Reset value of setting by name
+$ rhoas service-registry setting set --name registry.ccompat.legacy-id-mode.enabled --default
+'''
+
+[setting.set.cmd.flag.settingName.description]
+one = 'Name of the Service Registry setting'
+
+[setting.set.input.settingName.message]
+one = 'Name of the setting:'
+
+[setting.set.input.value.message]
+one = 'New setting value:'
+
+[setting.set.cmd.flag.value.description]
+one = 'New value of the Service Registry setting'
+
+[setting.set.cmd.flag.default.description]
+one = 'Restore value of the Service Registry setting to default'
+
+[setting.set.log.info.settingSet]
+one = 'Successfully updated settings for the Service Registry instance'
+
+[setting.set.log.info.settingReset]
+one = 'Service Registry setting was successfully reset to default'
+
+[setting.set.warning.valueignored]
+one = 'Value is ignored while Service Registry setting is being restored to default'
+

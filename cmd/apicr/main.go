@@ -5,11 +5,11 @@ import (
 	"os"
 
 	"github.com/apicurio/apicurio-cli/internal/build"
-	"github.com/redhat-developer/app-services-cli/pkg/core/config"
-	"github.com/redhat-developer/app-services-cli/pkg/core/localize/goi18n"
+	"github.com/apicurio/apicurio-cli/pkg/core/config"
+	"github.com/apicurio/apicurio-cli/pkg/core/localize/goi18n"
 
-	"github.com/redhat-developer/app-services-cli/pkg/shared/factory"
-	"github.com/redhat-developer/app-services-cli/pkg/shared/factory/defaultfactory"
+	"github.com/apicurio/apicurio-cli/pkg/shared/factory"
+	"github.com/apicurio/apicurio-cli/pkg/shared/factory/defaultfactory"
 
 	"github.com/apicurio/apicurio-cli/pkg/cmd/root"
 )
