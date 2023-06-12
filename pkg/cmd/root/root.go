@@ -10,9 +10,14 @@ import (
 	"github.com/apicurio/apicurio-cli/pkg/cmd/registry"
 	"github.com/apicurio/apicurio-cli/pkg/cmd/request"
 	"github.com/apicurio/apicurio-cli/pkg/cmd/serviceaccount"
+	"github.com/apicurio/apicurio-cli/pkg/core/cmdutil/flagutil"
 	"github.com/apicurio/apicurio-cli/pkg/shared/factory"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+
+	"github.com/apicurio/apicurio-cli/pkg/cmd/registry/artifact"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/registry/artifact/role"
+	"github.com/apicurio/apicurio-cli/pkg/cmd/registry/rule"
 )
 
 func NewRootCommand(f *factory.Factory, version string) *cobra.Command {
@@ -26,6 +31,7 @@ func NewRootCommand(f *factory.Factory, version string) *cobra.Command {
 		Example:       "",
 	}
 	fs := cmd.PersistentFlags()
+	flagutil.VerboseFlag(fs)
 
 	// this flag comes out of the box, but has its own basic usage text, so this overrides that
 	var help bool
@@ -42,5 +48,9 @@ func NewRootCommand(f *factory.Factory, version string) *cobra.Command {
 	cmd.AddCommand(contextcmd.NewContextCmd(f))
 	cmd.AddCommand(serviceaccount.NewServiceAccountCommand(f))
 	cmd.AddCommand(request.NewCallCmd(f))
+
+	cmd.AddCommand(artifact.NewArtifactsCommand(f))
+	cmd.AddCommand(role.NewRoleCommand(f))
+	cmd.AddCommand(rule.NewRuleCommand(f))
 	return cmd
 }

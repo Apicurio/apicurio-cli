@@ -116,6 +116,7 @@ func (a *defaultAPI) ServiceRegistryInstance(instanceID string) (*registryinstan
 		apiURL.Scheme = "http"
 		apiURL.Path = "/data/registry"
 		baseURL = apiURL.String()
+		fmt.Println(baseURL)
 	} else {
 		baseURL = registryUrl + "/apis/registry/v2"
 	}
@@ -125,7 +126,7 @@ func (a *defaultAPI) ServiceRegistryInstance(instanceID string) (*registryinstan
 	token := a.AccessToken
 
 	client := registryinstance.NewAPIClient(&registryinstance.Config{
-		BaseURL:    baseURL,
+		BaseURL:    "http://localhost:8080/apis/registry/v2",
 		Debug:      a.Logger.DebugEnabled(),
 		HTTPClient: a.CreateOAuthTransport(token),
 		UserAgent:  build.DefaultUserAgentPrefix + build.Version,

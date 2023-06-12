@@ -8,10 +8,10 @@ import "github.com/spf13/pflag"
 func VerboseFlag(flags *pflag.FlagSet) {
 	flags.BoolVarP(
 		&enabled,
-		"verbose",
-		"v",
+		"debug",
+		"d",
 		false,
-		"Enable verbose mode",
+		"Enable debug mode",
 	)
 }
 
