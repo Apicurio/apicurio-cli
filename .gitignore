@@ -1,0 +1,11 @@
+/*.env
+/*.properties
+.idea/
+.vscode/settings.jsonß
+
+.DS_Store
+/apicr
+
+node_modules
+**/package-lock.json
+.idea

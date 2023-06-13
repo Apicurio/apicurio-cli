@@ -1,0 +1,305 @@
+[context.cmd.shortDescription]
+one='Group, share and manage your rhoas services'
+
+[context.cmd.longDescription]
+one='''
+Group your service instances into reusable contexts.
+Context can be used when running other rhoas commands or to generate service configuration.
+
+A service context is a group of application service instances and their service identifiers. By using service contexts, you can group together application service instances that you want to use together.
+
+After creating a service context, you can share it with other developers so that they can use the same group of application service instances.
+
+You can also use the service context to automatically generate configuration files that you need to use those application service instances in other development platforms and tools. For example, the service context can generate the following types of configurations:
+
+- Standard environment variables for use in local development and tooling
+- Java properties files that can be used in Quarkus, Apache Kafka, and so on
+- Service binding configuration and service connections for the RHOAS Operator
+- Configuration for Helm Charts and Kubernetes
+
+The service context is defined in a JSON file (`contexts.json`), and stored locally on your computer. To find the location of this file, use the "rhoas context status" command.
+
+Note: To specify a custom location for the `contexts.json` file, set the $RHOAS_CONTEXT environment variable to the location you want to use. If you set $RHOAS_CONTEXT to "./rhoas.json", service contexts will be loaded from the current directory.
+'''
+
+[context.cmd.example]
+one='''
+# Set the current context
+$ rhoas context use --name qa
+
+# List contexts
+$ rhoas context list
+
+# Create a context to represent a group of development services
+$ rhoas context create --name dev-env
+'''
+
+[context.use.cmd]
+
+[context.use.cmd.shortDescription]
+one='Set the current context'
+
+[context.use.cmd.longDescription]
+one='''
+Select a service context to be used as the current context.
+
+When you set the context to be used, it is set as the current context for all service-based rhoas commands.
+'''
+
+[context.use.cmd.example]
+one='''
+# Set the current context
+$ rhoas context use --name dev
+'''
+
+[context.use.successMessage]
+one='Current context set to "{{.Name}}"'
+
+[context.unset.cmd]
+
+[context.unset.cmd.shortDescription]
+one='Unset services in context'
+
+[context.unset.cmd.longDescription]
+one='''
+Unset services in context
+
+When you unset a service in context, it will no longer point to any instance of that service.
+'''
+
+[context.unset.cmd.example]
+one='''
+# Unset services for current context
+$ rhoas context unset --services kafka,service-registry
+
+# Unset service-registry for a specific context
+$ rhoas context unset --name dev --services service-registry
+'''
+
+[context.unset.flag.services.description]
+one='The name of the services to unset'
+
+[context.unset.log.info.success]
+one='Service(s) have been unset'
+
+[context.unset.cmd.error.noServices]
+one='no service specified to unset'
+
+[context.status.cmd]
+
+[context.status.cmd.longDescription]
+one = '''
+View the status of your application services. This command shows the status of each of the application services instances in the service context.
+
+To view the status of a specific application service, use "rhoas context status [service]".
+
+Note: You can change the current instance for an application service with the "rhoas [service] use” command.
+'''
+
+[context.status.cmd.example]
+one='''
+# View the status of all application services in the current service context
+$ rhoas context status
+
+# View the status of all application services in a specific service context
+$ rhoas context status --name my-context
+
+# View the status of the Kafka instance set in the current service context
+$ rhoas context status kafka
+
+# View the status of your services in JSON format
+$ rhoas context status -o json
+'''
+
+[context.setKafka.cmd.example]
+description = 'Examples of how to use the command'
+one = '''
+# Select a Kafka instance by name to be set in the current context
+$ rhoas context set-kafka --name=my-kafka
+
+# Select a Kafka instance by ID to be set in the current context
+$ rhoas context set-kafka --id=1iSY6RQ3JKI8Q0OTmjQFd3ocFRg
+'''
+
+[context.setNamespace.cmd.example]
+description = 'Examples of how to use the command'
+one = '''
+# Set the current namespace providing the name of a Connectors namespace
+$ rhoas context set-namespace --name=my-namespace
+
+# Set the current namespace providing the ID of a Connectors namespace
+$ rhoas context set-namespace --id=1iSSK8RQ3JKI8Q0OTFHF5FRg
+'''
+
+[context.setConnector.cmd.example]
+description = 'Examples of how to use the command'
+one = '''
+# Set the current Connectors instance by providing the name of a Connectors instance
+$ rhoas context set-connector --name=my-connector
+
+# Set the current Connectors instance by providing the ID of a Connectors instance
+$ rhoas context set-connector --id=1iSSK8RQ3JKI8Q0OTFHF5FRg
+'''
+
+[context.setRegistry.cmd.example]
+one = '''
+# Select a Service Registry instance by name to be set in the current context
+rhoas context set-service-registry --name my-service-registry
+
+# Select a Service Registry instance by ID to be set in the current context
+rhoas context set-service-registry --id 1iSY6RQ3JKI8Q0OTmjQFd3ocFRg
+'''
+
+[context.list.cmd]
+
+[context.list.cmd.shortDescription]
+one='List service contexts'
+
+[context.list.cmd.longDescription]
+one='''
+List all service contexts. This command lists each service context, and indicates the context that is currently being used.
+
+To view the details of a service context, use the "rhoas context status" command.
+'''
+
+[context.list.cmd.example]
+one='''
+# List contexts
+$ rhoas context list
+'''
+
+[context.list.log.info.noContexts]
+one='''
+No service contexts exist.
+
+Run the following command to create a service context:
+
+  $ rhoas context create
+'''
+
+[context.create.cmd]
+
+[context.create.cmd.shortDescription]
+one='Create a service context'
+
+[context.create.cmd.longDescription]
+one='''
+Create a service context and assign associated service identifiers.
+
+A service context is a group of application service instances and their configuration details. By creating a service context, you can group together application service instances that you want to use together.
+
+After creating the service context, add application service instances to it by using the "rhoas context set-[service]" commands.
+'''
+
+[context.create.cmd.example]
+one='''
+# Create context
+$ rhoas context create --name dev
+'''
+
+[context.create.input.name.message]
+one='Name:'
+
+[context.create.input.name.help]
+one='Unique name of service context'
+
+[context.create.log.successMessage]
+one='''
+Context created successfully
+
+Run the following commands to set service instances in the created context:
+
+  $ rhoas context set-[service]
+'''
+
+[context.create.log.alreadyExists]
+one='Context with name "{{.Name}}" already exists'
+
+[context.delete.cmd]
+
+[context.delete.cmd.shortDescription]
+one='Permanently delete a service context.'
+
+[context.delete.cmd.longDescription]
+one='Delete a service context.'
+
+[context.delete.cmd.example]
+one='''
+# Delete the currently-selected service context
+$ rhoas context delete
+
+# Delete a service context by name
+$ rhoas context delete --name dev
+'''
+
+[context.delete.log.warning.currentUnset]
+one='Warning: Your current service context has been removed, use "rhoas context use" to select a different context'
+
+[context.delete.log.successMessage]
+one='Context deleted successfully'
+
+[context.common.flag.name]
+one='Name of the context'
+
+[context.common.error.noRegistryID]
+one='''
+The context doesn't have a Service Registry ID.
+Use the "rhoas context set-service-registry" command to select a Service Registry instance for your context
+'''
+
+[context.common.error.noKafkaID]
+one='''
+The context doesn't have a Kafka instance ID.
+Use the "rhoas context set-kafka" command to select a Kafka instance for your context
+'''
+
+[context.common.error.noConnectorID]
+one='''
+The Connectors instance for the current context is not set. The rhoas CLI uses the current Connectors 
+instance when you run any rhoas connector cluster commands. Use the rhoas context set-connector command 
+to set the current Connectors instance
+'''
+
+[context.common.error.registry.notFound]
+one='''
+Service registry instance in your context doesn't exist.
+Your instance might have been removed.
+You can update your context by creating a new instance or by using the "rhoas context set-service-registry" command
+'''
+
+[context.common.error.kafka.notFound]
+one='''
+Kafka instance in your context doesn't exist.
+Your instance might have been removed.
+You can update your context by creating a new instance or by using the "rhoas context set-kafka" command
+'''
+
+[context.common.error.namespace.notFound]
+one='''
+Connector namespace in your context does not exist.
+Your connector namespace might have been removed.
+You can set a namespace in the current context by creating a new connector namespace or by using the "rhoas context set-namespace" command
+'''
+
+[context.common.error.context.notFound]
+one='''
+context with name "{{.Name}}" does not exist
+
+Run "rhoas context list" to view available contexts
+'''
+
+[context.common.error.notSet]
+one='''
+The command you have been trying to execute requires a service context.
+Current context has not been set.
+Run either "rhoas context use" or "rhoas context create" to set a context.
+For example:
+
+  $ rhoas context use --name default
+'''
+
+[context.common.validation.name.error.required]
+one = 'context name is required'
+
+[context.common.validation.name.error.invalidChars]
+one = 'invalid context name "{{.Name}}"; only lowercase letters (a-z), numbers, and "-" are accepted'
