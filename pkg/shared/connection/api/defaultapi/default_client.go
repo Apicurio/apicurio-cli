@@ -17,7 +17,6 @@ import (
 	"github.com/apicurio/apicurio-cli/pkg/shared/svcstatus"
 	ocmSdkClient "github.com/openshift-online/ocm-sdk-go"
 	ocmclustersmgmtv1 "github.com/openshift-online/ocm-sdk-go/clustersmgmt/v1"
-	amsclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/accountmgmt/apiv1/client"
 	registryinstance "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance/apiv1internal"
 	registryinstanceclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance/apiv1internal/client"
 	registrymgmt "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registrymgmt/apiv1"
@@ -144,21 +143,6 @@ func (a *defaultAPI) GenericAPI() generic.GenericAPI {
 	})
 
 	return client
-}
-
-// AccountMgmt returns a new Account Management API client instance
-func (a *defaultAPI) AccountMgmt() amsclient.AppServicesApi {
-	cfg := amsclient.NewConfiguration()
-
-	cfg.Scheme = a.ApiURL.Scheme
-	cfg.Host = a.ApiURL.Host
-	cfg.UserAgent = a.UserAgent
-
-	cfg.HTTPClient = a.CreateOAuthTransport(a.AccessToken)
-
-	apiClient := amsclient.NewAPIClient(cfg)
-
-	return apiClient.AppServicesApi
 }
 
 // RBAC returns a new RBAC API client instance

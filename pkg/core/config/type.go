@@ -27,7 +27,6 @@ type Config struct {
 
 // ServiceConfigMap is a map of configs for the application services
 type ServiceConfigMap struct {
-	Kafka           *KafkaConfig           `json:"kafka,omitempty"`
 	ServiceRegistry *ServiceRegistryConfig `json:"serviceregistry,omitempty"`
 }
 
@@ -39,22 +38,4 @@ type KafkaConfig struct {
 type ServiceRegistryConfig struct {
 	InstanceID string `json:"instanceId"`
 	Name       string `json:"name"`
-}
-
-// GetKafkaIdOk returns the current Kafka instance ID and whether it exists
-func (c *Config) GetKafkaIdOk() (string, bool) {
-	if c.Services.Kafka != nil && c.Services.Kafka.ClusterID != "" {
-		return c.Services.Kafka.ClusterID, true
-	}
-
-	return "", false
-}
-
-// GetServiceRegistryIdOk returns the service registry instance ID and whether it exists or not
-func (c *Config) GetServiceRegistryIdOk() (string, bool) {
-	if c.Services.ServiceRegistry != nil && c.Services.ServiceRegistry.InstanceID != "" {
-		return c.Services.ServiceRegistry.InstanceID, true
-	}
-
-	return "", false
 }

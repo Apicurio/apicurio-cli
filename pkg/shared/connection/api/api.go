@@ -10,7 +10,6 @@ import (
 	"github.com/apicurio/apicurio-cli/pkg/api/rbac"
 	"github.com/apicurio/apicurio-cli/pkg/core/logging"
 
-	amsclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/accountmgmt/apiv1/client"
 	registryinstanceclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance/apiv1internal/client"
 	registrymgmtclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registrymgmt/apiv1/client"
 	svcacctmgmtclient "github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/serviceaccountmgmt/apiv1/client"
@@ -20,7 +19,6 @@ type API interface {
 	ServiceRegistryMgmt() registrymgmtclient.RegistriesApi
 	ServiceAccountMgmt() svcacctmgmtclient.ServiceAccountsApi
 	ServiceRegistryInstance(instanceID string) (*registryinstanceclient.APIClient, *registrymgmtclient.Registry, error)
-	AccountMgmt() amsclient.AppServicesApi
 	RBAC() rbac.RbacAPI
 	GenericAPI() generic.GenericAPI
 	GetConfig() Config

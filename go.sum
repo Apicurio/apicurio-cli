@@ -432,8 +432,6 @@ github.com/prometheus/procfs v0.7.3/go.mod h1:cz+aTbrPOrUb4q7XlbU9ygM+/jj0fzG6c1
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go v0.1.0/go.mod h1:JPNDOitDoHoHk5ZPRjfOxHQhE4Br0WtiyV8m43E0rso=
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go v0.2.0 h1:N2FoVU7tD8S94+xmgYDOfbLJpZz4o6bVoub7D/jFWC4=
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go v0.2.0/go.mod h1:JPNDOitDoHoHk5ZPRjfOxHQhE4Br0WtiyV8m43E0rso=
-github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/accountmgmt/apiv1/client v0.0.0-20230216114230-4ff0373de47f h1:jXUB35TstK4p1JkhMTU0xGRsoNlnwffv4qX9E3LRMck=
-github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/accountmgmt/apiv1/client v0.0.0-20230216114230-4ff0373de47f/go.mod h1:I2ayTdtOFVLwyASlzvbnKaz23v9c/GiJazXek2k1yUg=
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance v0.0.0-20230301144502-065a5966657b h1:xPYpWkdPk6B/xg6SgMy+8X0nusik0BPBw/+Ay52WLmA=
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance v0.0.0-20230301144502-065a5966657b/go.mod h1:Pvw6KeJUK9tdvCHkDIoXcWUyjxWc3Nn//Eax2mcbMJ0=
 github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registrymgmt v0.0.0-20230301144502-065a5966657b h1:XojikrF6INRyA6dXG92fX6tVbYhdMZKAPjvLSk6UT8s=

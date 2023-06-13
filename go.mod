@@ -23,7 +23,6 @@ require (
 	github.com/openshift-online/ocm-sdk-go v0.1.344
 	github.com/phayes/freeport v0.0.0-20220201140144-74d24b5ae9f5
 	github.com/pkg/errors v0.9.1
-	github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/accountmgmt/apiv1/client v0.0.0-20230216114230-4ff0373de47f
 	github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registryinstance v0.0.0-20230301144502-065a5966657b
 	github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/registrymgmt v0.0.0-20230301144502-065a5966657b
 	github.com/redhat-developer/app-services-sdk-core/app-services-sdk-go/serviceaccountmgmt v0.0.0-20230227102917-4a6410d5d4c2
